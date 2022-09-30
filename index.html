@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tchat - AFUP Tours</title>
+</head>
+<body>
+<h1>AFUP Tours - Messages</h1>
+<ul class="messages"></ul>
+<script>
+    const eventsource = new EventSource('/stream');
+    eventsource.onmessage = (message) => {
+        const element = document.createElement('li');
+        element.innerText = message.data;
+        document.querySelector('.messages').appendChild(element);
+    }
+</script>
+</body>
+</html>
